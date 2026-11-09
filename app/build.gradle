@@ -1,0 +1,49 @@
+plugins {
+    id 'com.android.application'
+}
+
+// 每次云端构建用 -PappVersionCode=<GitHub 运行号> 自动递增，
+// 保证「同签名 + versionCode 递增」→ 下载新 APK 直接覆盖安装，不用卸载旧版。
+def vCode = (project.findProperty('appVersionCode') ?: '1').toString().toInteger()
+
+android {
+    namespace 'com.redmi.lwp'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.redmi.lwp'
+        minSdk 29
+        targetSdk 34
+        versionCode vCode
+        versionName '1.0.' + vCode
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../signing/wallpaper.p12')
+            storePassword 'albumwp2026'
+            keyAlias 'wallpaperkey'
+            keyPassword 'albumwp2026'
+            storeType 'PKCS12'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}

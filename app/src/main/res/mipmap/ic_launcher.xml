@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 默认配置兜底（本应用 minSdk 29，实际系统会优先使用 anydpi-v26 的自适应图标） -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/ic_bg" />
+    <item
+        android:width="72dp"
+        android:height="72dp"
+        android:drawable="@drawable/ic_launcher_fg"
+        android:gravity="center" />
+</layer-list>

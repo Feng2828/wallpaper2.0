@@ -1,0 +1,4 @@
+// 根工程构建脚本（无需 Android Studio，云端命令行可直接编译）
+plugins {
+    id 'com.android.application' version '8.7.3' apply false
+}

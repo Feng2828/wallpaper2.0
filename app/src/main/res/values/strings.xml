@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">相册动态壁纸</string>
+    <string name="wallpaper_name">相册随机壁纸</string>
+    <string name="wallpaper_desc">从指定相册文件夹随机切换照片，支持定时、亮屏解锁换图与桌面悬浮球</string>
+</resources>
