@@ -13,11 +13,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: 给gradlew权限
+      - name: 生成 Gradle Wrapper
+        run: gradle wrapper
+      - name: 赋予执行权限
         run: chmod +x gradlew
       - name: 编译Release包
         run: ./gradlew assembleRelease
-      - name: 上传APK产物
+      - name: 上传APK
         uses: actions/upload-artifact@v4
         with:
           name: wallpaper-apk
