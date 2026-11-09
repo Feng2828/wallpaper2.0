@@ -1,5 +1,7 @@
 name: 构建相册动态壁纸 APK
-on: push
+on:
+  push:
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,11 +13,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: 赋予Gradle执行权限
+      - name: 给gradlew权限
         run: chmod +x gradlew
-      - name: 编译打包
+      - name: 编译Release包
         run: ./gradlew assembleRelease
-      - name: 上传APK
+      - name: 上传APK产物
         uses: actions/upload-artifact@v4
         with:
           name: wallpaper-apk
